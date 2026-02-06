@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Maker Club - Affiliate System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .links {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .link-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .link-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+        
+        .link-btn .icon {
+            font-size: 32px;
+            margin-right: 15px;
+        }
+        
+        .link-btn .info {
+            flex: 1;
+        }
+        
+        .link-btn .title {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .link-btn .desc {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .link-btn .arrow {
+            font-size: 24px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .feature {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .feature .emoji {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .feature .text {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>☕ Market Maker Club</h1>
+            <p>Affiliate Referral System</p>
+        </div>
+        
+        <!-- For Affiliates -->
+        <div class="card">
+            <h2>👥 For Affiliates</h2>
+            <p>Join the program and start earning 10% commission on every referral!</p>
+            
+            <div class="links">
+                <a href="affiliate-system.html" class="link-btn">
+                    <span class="icon">🚀</span>
+                    <div class="info">
+                        <div class="title">Join & Earn</div>
+                        <div class="desc">Sign up, get your link, start earning</div>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+                
+                <a href="complete-referral-website.html" class="link-btn">
+                    <span class="icon">🌐</span>
+                    <div class="info">
+                        <div class="title">Learn More</div>
+                        <div class="desc">See how the program works</div>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- For Admin -->
+        <div class="card">
+            <h2>🔐 For Administrators</h2>
+            <p>Manage affiliates and add referral purchases.</p>
+            
+            <div class="links">
+                <a href="admin-add-referrals.html" class="link-btn">
+                    <span class="icon">⚙️</span>
+                    <div class="info">
+                        <div class="title">Admin Panel</div>
+                        <div class="desc">Add purchases and credit affiliates</div>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Documentation -->
+        <div class="card">
+            <h2>📚 Documentation</h2>
+            <p>Learn how to use and customize the system.</p>
+            
+            <div class="links">
+                <a href="README.md" class="link-btn" download>
+                    <span class="icon">📖</span>
+                    <div class="info">
+                        <div class="title">README</div>
+                        <div class="desc">Complete project documentation</div>
+                    </div>
+                    <span class="arrow">⬇</span>
+                </a>
+                
+                <a href="HOW_TO_TRACK_PURCHASES.md" class="link-btn" download>
+                    <span class="icon">📊</span>
+                    <div class="info">
+                        <div class="title">Tracking Guide</div>
+                        <div class="desc">How to track and add purchases</div>
+                    </div>
+                    <span class="arrow">⬇</span>
+                </a>
+                
+                <a href="GITHUB_UPLOAD_GUIDE.md" class="link-btn" download>
+                    <span class="icon">🐙</span>
+                    <div class="info">
+                        <div class="title">GitHub Guide</div>
+                        <div class="desc">Upload and share your system</div>
+                    </div>
+                    <span class="arrow">⬇</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Features -->
+        <div class="card">
+            <h2>✨ What's Included</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="emoji">💰</div>
+                    <div class="text"><strong>10% Commission</strong><br>Earn on every purchase</div>
+                </div>
+                <div class="feature">
+                    <div class="emoji">📱</div>
+                    <div class="text"><strong>Real-Time Tracking</strong><br>See earnings instantly</div>
+                </div>
+                <div class="feature">
+                    <div class="emoji">💳</div>
+                    <div class="text"><strong>PayPal Payments</strong><br>Get paid securely</div>
+                </div>
+                <div class="feature">
+                    <div class="emoji">🎨</div>
+                    <div class="text"><strong>Beautiful UI</strong><br>Modern design</div>
+                </div>
+                <div class="feature">
+                    <div class="emoji">🔒</div>
+                    <div class="text"><strong>No Database</strong><br>Works offline</div>
+                </div>
+                <div class="feature">
+                    <div class="emoji">📈</div>
+                    <div class="text"><strong>Easy Admin</strong><br>Simple management</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Start -->
+        <div class="card">
+            <h2>🚀 Quick Start</h2>
+            <p><strong>For Affiliates:</strong></p>
+            <ol style="margin-left: 20px; color: #666; line-height: 2;">
+                <li>Open <code>affiliate-system.html</code></li>
+                <li>Sign up with name, email, and PayPal</li>
+                <li>Copy your unique referral link</li>
+                <li>Share it everywhere!</li>
+                <li>Track your earnings in the dashboard</li>
+            </ol>
+            
+            <p style="margin-top: 20px;"><strong>For Admin:</strong></p>
+            <ol style="margin-left: 20px; color: #666; line-height: 2;">
+                <li>Open <code>admin-add-referrals.html</code></li>
+                <li>Search for affiliate by name/code</li>
+                <li>Enter customer email and amount</li>
+                <li>Click "Add Referral"</li>
+                <li>Affiliate sees it instantly!</li>
+            </ol>
+        </div>
+        
+        <!-- Support -->
+        <div class="card">
+            <h2>💬 Support & Links</h2>
+            <div style="line-height: 2; color: #666;">
+                <strong>☕ Buy Me a Coffee:</strong> <a href="https://buymeacoffee.com/marketmakerclub" target="_blank" style="color: #667eea;">buymeacoffee.com/marketmakerclub</a><br>
+                <strong>📧 Support:</strong> support@marketmakerclub.com<br>
+                <strong>🐦 Twitter:</strong> @MarketMakerClub<br>
+                <strong>📖 Documentation:</strong> See README.md<br>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Made with ❤️ for Market Maker Club</p>
+            <p style="margin-top: 10px; font-size: 14px;">Start your affiliate program today!</p>
+        </div>
+    </div>
+</body>
+</html>

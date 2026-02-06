@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Maker Club - Referral Program</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        nav .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+        
+        nav .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .nav-cta {
+            background: white;
+            color: #667eea;
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 20px 80px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .step {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .step h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .step p {
+            color: #666;
+        }
+        
+        /* Signup Form */
+        .signup-section {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .signup-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid #e0e0e0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        /* Dashboard */
+        .dashboard {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .dashboard-header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .referral-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .referral-code {
+            font-size: 32px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            letter-spacing: 2px;
+        }
+        
+        .referral-link-input {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            padding: 12px;
+            color: white;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 14px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-card .label {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .stat-card .value {
+            color: #333;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        
+        .stat-card.money .value {
+            color: #28a745;
+        }
+        
+        .referrals-table {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-confirmed {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            border: 1px solid #28a745;
+            color: #155724;
+        }
+        
+        .alert-info {
+            background: #d1ecf1;
+            border: 1px solid #17a2b8;
+            color: #0c5460;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo" onclick="showSection('home')">Market Maker Club</a>
+            <ul class="nav-links">
+                <li><a onclick="showSection('home')">Home</a></li>
+                <li><a onclick="showSection('how-it-works')">How It Works</a></li>
+                <li><a onclick="showDashboard()" id="dashboardLink">My Dashboard</a></li>
+                <li><a onclick="showSection('signup')" class="nav-cta">Join & Earn</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HOME SECTION -->
+    <section id="home-section">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Earn Money by Sharing</h1>
+                <p>Join our affiliate program and earn 10% commission for every person who supports us through your link. It's simple, free, and you get paid for every coffee they buy!</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="showSection('signup')">Start Earning Now</button>
+                    <button class="btn btn-secondary" onclick="showSection('how-it-works')">Learn How</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="how-it-works">
+            <div class="container">
+                <h2 class="section-title">How You Earn Money</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Sign Up Free</h3>
+                        <p>Create your free affiliate account in 30 seconds. Get your unique referral link instantly.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Share Your Link</h3>
+                        <p>Share your special Buy Me a Coffee link on social media, email, or with friends and family.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>They Support Us</h3>
+                        <p>When someone clicks your link and buys us a coffee, we track it automatically.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>You Get Paid</h3>
+                        <p>You earn 10% commission on every purchase. Get paid directly to your PayPal account!</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 50px; padding: 40px; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <h3 style="margin-bottom: 20px; color: #667eea;">💰 Earnings Example</h3>
+                    <p style="font-size: 18px; color: #666; margin-bottom: 30px;">
+                        If someone buys 3 coffees ($15) using your link:<br>
+                        <strong style="font-size: 24px; color: #28a745;">You earn $1.50!</strong>
+                    </p>
+                    <p style="color: #666;">
+                        🚀 Share with 20 people who each buy 3 coffees = <strong>$30 earned</strong><br>
+                        🎯 Share with 100 people = <strong>$150 earned</strong><br>
+                        💎 No limit to how much you can earn!
+                    </p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- SIGNUP SECTION -->
+    <section id="signup-section" class="signup-section hidden">
+        <div class="container">
+            <h2 class="section-title">Join the Affiliate Program</h2>
+            <div class="signup-form">
+                <div class="alert alert-info" id="signupFormContainer">
+                    <strong>💰 Start Earning Today!</strong><br>
+                    Get your unique referral link and earn 10% commission on every coffee purchase made through your link.
+                </div>
+                
+                <form id="signupForm" onsubmit="handleSignup(event)">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="paymentEmail">PayPal Email (for commission payments)</label>
+                        <input type="email" id="paymentEmail" name="paymentEmail" required placeholder="your@paypal.com">
+                        <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">
+                            💰 All commissions are paid via PayPal only
+                        </small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" id="submitBtn">
+                        Create My Affiliate Account
+                    </button>
+                </form>
+                
+                <!-- Success Page -->
+                <div id="successPage" class="hidden" style="text-align: center; padding: 40px 20px;">
+                    <div style="font-size: 64px; margin-bottom: 20px;">🎉</div>
+                    <h2 style="color: #667eea; margin-bottom: 20px;">Success! Your affiliate link is ready!</h2>
+                    
+                    <div style="background: #f8f9fa; padding: 30px; border-radius: 12px; margin: 30px 0;">
+                        <p style="color: #666; margin-bottom: 15px; font-size: 16px;">Your unique link:</p>
+                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #667eea; margin-bottom: 20px;">
+                            <p id="successLink" style="color: #667eea; font-weight: 600; font-size: 14px; word-break: break-all; margin: 0;"></p>
+                        </div>
+                        <p style="color: #333; font-size: 18px; font-weight: 600;">Share it to start earning!</p>
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="copySuccessLink()" style="width: 100%; margin-bottom: 15px; font-size: 16px;">
+                        📋 Copy Link
+                    </button>
+                    
+                    <button class="btn btn-secondary" onclick="showDashboard()" style="width: 100%; border: 2px solid #667eea; color: #667eea; background: white; font-size: 16px;">
+                        View My Dashboard →
+                    </button>
+                </div>
+                
+                <div id="errorMessage" class="alert alert-error hidden"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DASHBOARD SECTION -->
+    <section id="dashboard-section" class="dashboard hidden">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>My Affiliate Dashboard</h1>
+                <p style="color: #666;">Welcome back, <strong id="userName"></strong>!</p>
+                <p style="color: #667eea; margin-top: 10px;">
+                    💳 <strong>PayPal:</strong> <span id="userPayPal"></span>
+                </p>
+            </div>
+            
+            <!-- My Account Section (Success Page Style) -->
+            <div style="background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 30px; text-align: center;">
+                <h2 style="color: #667eea; margin-bottom: 10px;">🎉 Your Affiliate Link</h2>
+                <p style="color: #666; margin-bottom: 20px;">Share this link to earn 10% commission on every purchase!</p>
+                
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin: 20px 0;">
+                    <div class="referral-code" id="userCode" style="color: #667eea; margin-bottom: 15px;">MMC-XXXXXXXX</div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #667eea; margin-bottom: 15px;">
+                        <p id="userLink" style="color: #667eea; font-weight: 600; font-size: 14px; word-break: break-all; margin: 0;">Loading...</p>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn btn-primary" onclick="copyLink()" style="min-width: 150px;">
+                        📋 Copy Link
+                    </button>
+                    <button class="btn btn-secondary" onclick="shareLink()" style="min-width: 150px; border: 2px solid #667eea; background: white; color: #667eea;">
+                        📱 Share Link
+                    </button>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="label">Total Referrals</div>
+                    <div class="value" id="totalReferrals">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Confirmed Sales</div>
+                    <div class="value" id="confirmedReferrals">0</div>
+                </div>
+                <div class="stat-card money">
+                    <div class="label">Total Earned</div>
+                    <div class="value" id="totalEarned">$0.00</div>
+                </div>
+                <div class="stat-card money">
+                    <div class="label">Pending Payment</div>
+                    <div class="value" id="pendingPayment">$0.00</div>
+                </div>
+            </div>
+            
+            <div class="referrals-table">
+                <h3>Your Referrals</h3>
+                <p style="color: #666; margin-bottom: 20px;">Track everyone who signed up and purchased through your link</p>
+                
+                <table id="referralsTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Customer</th>
+                            <th>Amount Paid</th>
+                            <th>Your Commission</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="referralsBody">
+                        <tr>
+                            <td colspan="5" style="text-align: center; color: #999; padding: 40px;">
+                                No referrals yet. Start sharing your link to see results here!
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="alert alert-info" style="margin-top: 30px;">
+                <strong>💡 How to maximize your earnings:</strong><br>
+                • Share your link on social media (Twitter, Instagram, Facebook)<br>
+                • Add it to your email signature<br>
+                • Share it in relevant communities and forums<br>
+                • Create content about Market Maker Club and include your link<br>
+                • The more people click and buy, the more you earn!
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Data storage
+        let currentUser = null;
+        let referrals = [];
+        
+        // Navigation
+        function showSection(section) {
+            document.getElementById('home-section').classList.add('hidden');
+            document.getElementById('signup-section').classList.add('hidden');
+            document.getElementById('dashboard-section').classList.add('hidden');
+            
+            if (section === 'home') {
+                document.getElementById('home-section').classList.remove('hidden');
+            } else if (section === 'signup') {
+                document.getElementById('signup-section').classList.remove('hidden');
+            } else if (section === 'how-it-works') {
+                document.getElementById('home-section').classList.remove('hidden');
+                setTimeout(() => {
+                    document.getElementById('how-it-works').scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function showDashboard() {
+            const user = localStorage.getItem('affiliateUser');
+            if (!user) {
+                alert('Please sign up first to access your dashboard!');
+                showSection('signup');
+                return;
+            }
+            
+            currentUser = JSON.parse(user);
+            loadDashboard();
+            document.getElementById('home-section').classList.add('hidden');
+            document.getElementById('signup-section').classList.add('hidden');
+            document.getElementById('dashboard-section').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Generate referral code
+        function generateCode() {
+            const chars = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
+            let code = 'MMC-';
+            for (let i = 0; i < 8; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return code;
+        }
+        
+        // Handle signup
+        function handleSignup(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const paymentEmail = document.getElementById('paymentEmail').value;
+            
+            const referralCode = generateCode();
+            const affiliateLink = `https://buymeacoffee.com/marketmakerclub?via=${referralCode}`;
+            
+            const user = {
+                name,
+                email,
+                paymentMethod: 'paypal',
+                paymentEmail,
+                referralCode,
+                affiliateLink,
+                signupDate: new Date().toISOString(),
+                totalEarned: 0,
+                pendingPayment: 0,
+                referrals: []
+            };
+            
+            // Save to localStorage
+            localStorage.setItem('affiliateUser', JSON.stringify(user));
+            currentUser = user;
+            
+            // Hide form and show success page
+            document.getElementById('signupFormContainer').classList.add('hidden');
+            document.getElementById('signupForm').classList.add('hidden');
+            document.getElementById('successPage').classList.remove('hidden');
+            document.getElementById('successLink').textContent = affiliateLink;
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Copy link from success page
+        function copySuccessLink() {
+            const link = document.getElementById('successLink').textContent;
+            
+            // Create temporary textarea
+            const textarea = document.createElement('textarea');
+            textarea.value = link;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            // Change button text
+            event.target.textContent = '✅ Copied!';
+            setTimeout(() => {
+                event.target.textContent = '📋 Copy Link';
+            }, 2000);
+        }
+        
+        // Load dashboard
+        function loadDashboard() {
+            if (!currentUser) return;
+            
+            document.getElementById('userName').textContent = currentUser.name;
+            document.getElementById('userPayPal').textContent = currentUser.paymentEmail;
+            document.getElementById('userCode').textContent = currentUser.referralCode;
+            document.getElementById('userLink').textContent = currentUser.affiliateLink;
+            
+            // Load stats
+            document.getElementById('totalReferrals').textContent = currentUser.referrals.length;
+            document.getElementById('confirmedReferrals').textContent = 
+                currentUser.referrals.filter(r => r.status === 'confirmed').length;
+            document.getElementById('totalEarned').textContent = '$' + currentUser.totalEarned.toFixed(2);
+            document.getElementById('pendingPayment').textContent = '$' + currentUser.pendingPayment.toFixed(2);
+            
+            // Load referrals table
+            const tbody = document.getElementById('referralsBody');
+            if (currentUser.referrals.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: #999; padding: 40px;">
+                            No referrals yet. Start sharing your link to see results here!
+                        </td>
+                    </tr>
+                `;
+            } else {
+                tbody.innerHTML = currentUser.referrals.map(ref => `
+                    <tr>
+                        <td>${new Date(ref.date).toLocaleDateString()}</td>
+                        <td>${ref.customerName}</td>
+                        <td>$${ref.amount.toFixed(2)}</td>
+                        <td><strong>$${ref.commission.toFixed(2)}</strong></td>
+                        <td><span class="status-badge status-${ref.status}">${ref.status.toUpperCase()}</span></td>
+                    </tr>
+                `).join('');
+            }
+        }
+        
+        // Copy link
+        function copyLink() {
+            const link = document.getElementById('userLink').textContent;
+            
+            // Create temporary textarea
+            const textarea = document.createElement('textarea');
+            textarea.value = link;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            // Change button text
+            event.target.textContent = '✅ Copied!';
+            setTimeout(() => {
+                event.target.textContent = '📋 Copy Link';
+            }, 2000);
+        }
+        
+        // Share link
+        function shareLink() {
+            const link = currentUser.affiliateLink;
+            const text = `Support Market Maker Club and get exclusive trading insights! ☕`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Market Maker Club',
+                    text: text,
+                    url: link
+                });
+            } else {
+                copyLink();
+            }
+        }
+        
+        // Demo: Simulate a referral (for testing)
+        function simulateReferral() {
+            if (!currentUser) return;
+            
+            const amount = parseFloat(prompt('Enter purchase amount (e.g., 15 for 3 coffees):') || 0);
+            if (amount <= 0) return;
+            
+            const commission = amount * 0.10;
+            
+            const referral = {
+                date: new Date().toISOString(),
+                customerName: 'Demo Customer ' + (currentUser.referrals.length + 1),
+                amount: amount,
+                commission: commission,
+                status: 'confirmed'
+            };
+            
+            currentUser.referrals.push(referral);
+            currentUser.totalEarned += commission;
+            currentUser.pendingPayment += commission;
+            
+            localStorage.setItem('affiliateUser', JSON.stringify(currentUser));
+            loadDashboard();
+            
+            alert(`✅ Demo referral added!\nCustomer paid: $${amount}\nYou earned: $${commission.toFixed(2)}`);
+        }
+        
+        // Check if user is logged in on load
+        window.addEventListener('load', () => {
+            const user = localStorage.getItem('affiliateUser');
+            if (user) {
+                currentUser = JSON.parse(user);
+                document.getElementById('dashboardLink').textContent = '📊 My Dashboard';
+            }
+        });
+        
+        // Add demo button in console
+        console.log('🎮 DEMO MODE: Type simulateReferral() in console to test adding a referral');
+    </script>
+</body>
+</html>
